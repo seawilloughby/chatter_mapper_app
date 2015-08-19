@@ -4,11 +4,11 @@ from flask import request
 from flask import render_template
 import json
 #import psycopg2
-import media_mapper.keys
+import keys
 
 # create the application object
 app = Flask(__name__)
-api_key = media_mapper.keys.MAPBOX_API_KEY
+api_key = keys.MAPBOX_API_KEY
 
 #load data from kmeans clustering
 in_file = open('data/kmeans6_geo.json','r')
@@ -64,4 +64,4 @@ def test():
 
 # start the server with the 'run()' method
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80)#,debug=True)
