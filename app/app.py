@@ -3,12 +3,12 @@ from flask import request
 #from send_example_sf import send_example_json
 from flask import render_template
 import json
-#import psycopg2
-import keys
+import psycopg2
+import media_mapper.keys
 
 # create the application object
 app = Flask(__name__)
-api_key = keys.MAPBOX_API_KEY
+api_key = media_mapper.keys.MAPBOX_API_KEY
 
 #load data from kmeans clustering
 in_file = open('data/kmeans6_geo.json','r')
@@ -47,16 +47,21 @@ def first_post():
 
 @app.route('/contact.html')
 def contact():
-	return render_template('contact.html', weekday = weekend, api_key = api_key )  
+	return render_template('contact.html' )  
 
 @app.route('/about.html')
 def about():
 	return render_template('about.html', wordcld = wordcld, api_key = api_key) 
 
 
-app.route('/test.html')
-def test():
-	return render_template('test.html') 
+@app.route('/weekday.html')
+def weekday():
+    return render_template('weekday.html', weekday = weekday, api_key = api_key) 
+
+
+@app.route('/weekend.html')
+def weekend():
+    return render_template('weekend.html', weekend = weekend, api_key = api_key) 
 
 # @app.route('/marketing')
 # def marketing():
@@ -64,4 +69,4 @@ def test():
 
 # start the server with the 'run()' method
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)#,debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
