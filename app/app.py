@@ -3,11 +3,11 @@ from flask import request
 #from send_example_sf import send_example_json
 from flask import render_template
 import json
-import media_mapper.keys
+import keys
 
 # create the application object
 app = Flask(__name__)
-api_key = media_mapper.keys.MAPBOX_API_KEY
+api_key = keys.MAPBOX_API_KEY
 
 #load data from kmeans clustering
 in_file = open('data/kmeans6_geo.json','r')
