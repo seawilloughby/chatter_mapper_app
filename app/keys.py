@@ -23,9 +23,16 @@ initailized.
 
 import os
 
+try:
+	import secrets
+except:
+	secrets = None
 #MAPBOX
 try:
-	MAPBOX_API_KEY = os.environ['MAPBOX_API_KEY']
+	if secrets:
+		MAPBOX_API_KEY = secrets.MAPBOX_API_KEY
+	else:
+		MAPBOX_API_KEY = os.environ['MAPBOX_API_KEY']
 except:
 	print 'MAPBOX_API_KEY not found.'
 #TWITTER
