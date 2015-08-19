@@ -3,7 +3,6 @@ from flask import request
 #from send_example_sf import send_example_json
 from flask import render_template
 import json
-import psycopg2
 import media_mapper.keys
 
 # create the application object
